@@ -42,6 +42,9 @@
   font-family: 'helvetica', sans-serif;
   font-weight: 700;
 }
+.quiz .hide {
+  display: none;
+}
 .quiz__summary--hidden {
   display: none;
 }
