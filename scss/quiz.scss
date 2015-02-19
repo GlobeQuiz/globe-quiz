@@ -9,6 +9,12 @@ $module-name: 'quiz';
 // ------------------------------------------------------------
 
 .#{$module-name} {
+
+
+  img {
+    width:10px;
+    height:10px;
+  }
   // Module Styles
   width: 90%;
   font-family: 'helvetica', sans-serif;

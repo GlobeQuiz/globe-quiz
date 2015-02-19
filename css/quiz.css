@@ -6,6 +6,10 @@
   display: block;
   border: 1px solid #ccc;
 }
+.quiz img {
+  width: 10px;
+  height: 10px;
+}
 .quiz__header {
   width: 100%;
   position: relative;
