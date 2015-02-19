@@ -11,6 +11,7 @@ $module-name: 'quiz';
 .#{$module-name} {
   // Module Styles
   width: 90%;
+  font-family: 'helvetica', sans-serif;
   padding: 10px 5%;
   margin-bottom: 30px;
   display: block;
@@ -21,22 +22,28 @@ $module-name: 'quiz';
     width: 100%;
     position: relative;
     padding: 5px 0 10px;
+    overflow: auto;
   }
 
   &__title {
-    width: 50%;
+    width: 80%;
+    text-transform: uppercase;
     display: inline-block;
-    font-size: 22px;
+    font-size: 26px;
     text-align: left;
+    margin-bottom: 5px;
   }
 
-  &__progress, 
-  &__timer,
-  &__next {
-    display: inline-block;
+  &__timer {
+    font-size: 20px;
+    float: right;
   }
 
   &__next {
+    cursor: pointer;
+  }
+
+  &__progress {
     cursor: pointer;
   }
 
@@ -47,13 +54,14 @@ $module-name: 'quiz';
 
   &__answer {
     height: 40px;
-    width: 160px;
+    width: 100%;
     border-radius: 3px;
     background-color: #f2f2e8; 
     -webkit-transition: background .1s;
     text-align: center;
     margin: 5px 0; 
     font-weight: 700;
+    cursor: pointer;
   }
 
   &__answer-text {

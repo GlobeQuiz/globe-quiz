@@ -1,5 +1,6 @@
 .quiz {
   width: 90%;
+  font-family: 'helvetica', sans-serif;
   padding: 10px 5%;
   margin-bottom: 30px;
   display: block;
@@ -9,17 +10,24 @@
   width: 100%;
   position: relative;
   padding: 5px 0 10px;
+  overflow: auto;
 }
 .quiz__title {
-  width: 50%;
+  width: 80%;
+  text-transform: uppercase;
   display: inline-block;
-  font-size: 22px;
+  font-size: 26px;
   text-align: left;
+  margin-bottom: 5px;
 }
-.quiz__progress, .quiz__timer, .quiz__next {
-  display: inline-block;
+.quiz__timer {
+  font-size: 20px;
+  float: right;
 }
 .quiz__next {
+  cursor: pointer;
+}
+.quiz__progress {
   cursor: pointer;
 }
 .quiz__question {
@@ -28,13 +36,14 @@
 }
 .quiz__answer {
   height: 40px;
-  width: 160px;
+  width: 100%;
   border-radius: 3px;
   background-color: #f2f2e8;
   -webkit-transition: background .1s;
   text-align: center;
   margin: 5px 0;
   font-weight: 700;
+  cursor: pointer;
 }
 .quiz__answer-text {
   line-height: 14px;
