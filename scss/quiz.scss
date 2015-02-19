@@ -1,4 +1,146 @@
-html,
-body {
-	
+// *
+// *  QUIZ TOOL 
+// *
+
+$module-name: 'quiz';
+
+// ------------------------------------------------------------
+// Default Styles
+// ------------------------------------------------------------
+
+.#{$module-name} {
+  // Module Styles
+  width: 90%;
+  padding: 10px 5%;
+  margin-bottom: 30px;
+  display: block;
+  border: 1px solid #ccc;
+
+  // Some Element Styles
+  &__header {
+    width: 100%;
+    position: relative;
+    padding: 5px 0 10px;
+  }
+
+  &__title {
+    width: 50%;
+    display: inline-block;
+    font-size: 22px;
+    text-align: left;
+  }
+
+  &__progress, 
+  &__timer,
+  &__next {
+    display: inline-block;
+  }
+
+  &__next {
+    cursor: pointer;
+  }
+
+  &__question {
+    font-style: bold;
+    margin-bottom: 10px;
+  }
+
+  &__answer {
+    height: 40px;
+    width: 160px;
+    border-radius: 3px;
+    background-color: #f2f2e8; 
+    -webkit-transition: background .1s;
+    text-align: center;
+    margin: 5px 0; 
+    font-weight: 700;
+  }
+
+  &__answer-text {
+    line-height: 14px;
+    padding-top: 14px;
+    font-family: 'helvetica', sans-serif;
+    font-weight: 700;
+  }
+
+  &__summary--hidden {
+    display: none;
+  }
+
+}
+
+// ------------------------------------------------------------
+// Tablet Breakpoint
+// ------------------------------------------------------------
+
+// Tablet Breakpoint
+@media screen and (max-width: 767px) {
+  .#{$module-name} {
+    // Module Styles
+
+    // Some Element Styles
+    &__element {}
+
+  }
+}
+
+// ------------------------------------------------------------
+// Desktop Breakpoint
+// ------------------------------------------------------------
+
+@media screen and (max-width: 991px) {
+  .#{$module-name} {
+    // Module Styles
+
+    // Some Element Styles
+    &__element {}
+
+  }
+}
+
+// ------------------------------------------------------------
+// Keyframes
+// ------------------------------------------------------------
+
+@-webkit-keyframes shake {
+  0%, 100% {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  } 
+  
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-2px, 0, 0);
+            transform: translate3d(-2px, 0, 0);
+  }
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(2px, 0, 0);
+            transform: translate3d(2px, 0, 0);
+  }
+}
+  
+@-webkit-keyframes tada {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+
+  10%, 20% {
+    -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+            transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%, 50%, 70%, 90% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+            transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40%, 60%, 80% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+            transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
 }
