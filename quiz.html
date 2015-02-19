@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Quiz</title>
-  <link rel="stylesheet" href="/css/quiz.css" type="text/css">
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="css/quiz.css" type="text/css">
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="js/script.js"></script>
  </head>
  <body>
 
@@ -16,8 +17,8 @@
 		<div class="quiz__header">
 			<h1 class="quiz__title">TEST QUIZ</h1>
 			<div class="quiz__timer"></div>
-			<div class="quiz__progress"></div>
-			<div class="quiz__next"></div>
+			<div class="quiz__progress">0/2</div>
+			<div class="quiz__next">skip this question</div>
 		</div> 
 		
 		<div class="quiz__body">
@@ -45,7 +46,7 @@
 				</li>
 			</ul>
 		</div>
-		<div class="quiz__body">
+		<div class="quiz__body hide">
 			<h3 calss="quiz__question">Which photo matches the following?</h3>
 			<img src="https://cdn.urbantimes.co/wp-content/uploads/2014/02/p.jpg" class="quiz__question-image">
 				
@@ -71,11 +72,12 @@
 				</li>
 			</ul>
 		</div>
+		<div class="finalScreen hide">
+			This is the last screen
+			<div class="quiz-answers"></div>
+			<div class="your-answers"></div>
+		</div>	
 	</div>
 	<!-- END QUIZ -->
-
-
-
-
  </body>
 </html>
