@@ -1,7 +1,7 @@
 //git controlled version
 $( document ).ready(function() {
 
-	answerkey = [1,1];
+	answerkey = [3,1,1,2,2];
 	yourAnswers = [];
 	activeQuestion = 0;
 	numRight = 0;
