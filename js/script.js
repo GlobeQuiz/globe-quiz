@@ -78,15 +78,16 @@ $( document ).ready(function() {
 				$.each(answerkey, function(index, val) {
 					console.log('looping through'+index);
 					offsetIndex= index+1;
-					questionElement = $('.quiz__body:nth-child('+(offsetIndex+1)+') li:nth-child('+val+')');
-					answerElement = $('.quiz__body:nth-child('+(offsetIndex+1)+') li:nth-child('+yourAnswers[index]+')');
+					questionElement = $('.quiz__body:nth-child('+(offsetIndex)+') li:nth-child('+val+')');
+					answerElement = $('.quiz__body:nth-child('+(offsetIndex)+') li:nth-child('+yourAnswers[index]+')');
+					console.log (questionElement);
 					console.log (answerElement);
 					finalString += ("Question: "+offsetIndex+"</br>");
-					finalString += ("the correct answer is "+ questionElement.html()+"</br>" );
+					finalString += ("the correct answer is: </br>"+ questionElement.html()+"</br>" );
 					if (yourAnswers[index] == 0){
 						finalString += " you skipped this question</br>";
 					} else {
-						finalString += ("you answered "+ answerElement.html()+"</br>" );
+						finalString += ("you answered: </br>"+ answerElement.html()+"</br>" );
 					}
 					finalString += "</br>";
 				});
@@ -94,29 +95,34 @@ $( document ).ready(function() {
 			}
 		}
 		quizObject.timer = function(timeLeft){
-
+				if(typeof id !== "undefined"){
+				  clearTimeout(id);
+				}
 			if (timeLeft > 0) {
 				$('.quiz__timer').html(timeLeft+ " s");
 				id = setInterval(function() {
 					timeLeft--;
 					if(timeLeft <= 0) {
+						console.log(timeLeft);
 						yourAnswers[activeQuestion] = 0;
 						console.log('timeup');
-						$('.quiz__timer').html(timeLeft + 's');
-			    	$('.quiz__next').html('Next Question &nbsp;&nbsp; &#8614;');
+						$('.quiz__timer').html('0 s');
+			    		$('.quiz__next').html('Next Question &nbsp;&nbsp; &#8614;');
 						clearInterval(id);
 						$('.quiz__answer-container').addClass('disabled');
+						return;
 					} else {
+						console.log(timeLeft);
 						console.log('countdown');
 						$('.quiz__timer').html(timeLeft+ " s");
 					}
 				}, 1000);
 			} else {
 				console.log ("stopping timer");
-				clearInterval(id);
+				//clearInterval(id);
 			}
 
-		}
+		};
 
 
 		return quizObject;

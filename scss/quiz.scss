@@ -92,6 +92,7 @@ $module-name: 'quiz';
 
   &__timer {
     margin-left: 5px;
+    min-width: 26px;
   }
 
   &__timer__icon {
@@ -200,6 +201,11 @@ $module-name: 'quiz';
     font-family: 'helvetica', sans-serif;
     font-weight: 700;
     padding: 15px 15px 13px 15px;
+  }
+
+  &__answer-image {
+    height: 150px;
+    width: auto;
   }
   
   .hide {
