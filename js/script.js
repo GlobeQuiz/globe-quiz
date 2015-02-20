@@ -24,7 +24,7 @@ yourAnswers[activeQuestion]= ($(this).index()+1);
 $(".quiz__summary").removeClass('quiz__summary--hidden');
 if (($(this).index()+1) == answerkey[activeQuestion]) {
 	numRight++;
-	$('.quiz__progress').html(numRight+'/2 correct');
+	$('.quiz__progress').html(numRight+'/'+answerkey.length+' correct');
 } else {
 	$('.quiz__answer:nth-child('+($(this).index()+1)+')').addClass('incorrect');
 }
@@ -39,6 +39,7 @@ $(this).parent().addClass('disabled');
 $('.quiz__next').click(function(){
 	if (!didAnswer) {
 		yourAnswers[activeQuestion] = 0;
+		//quizObject.timer(20);
 	}
 	console.log("going next");
 	activeQuestion++;
@@ -57,7 +58,9 @@ quizObject.timer(timerCount);
 quizObject.initQuestion = function(newQuestion){
 	didAnswer=false;
 	$(".quiz__summary").addClass('quiz__summary--hidden');
+	$('.quiz__answer-container').removeClass('disabled');
 	if (newQuestion <answerkey.length){
+		quizObject.timer(0);
 		quizObject.timer(timerCount);
 		$('.quiz__body').addClass('hide');
 		$('.quiz__next').html('skip this question');
@@ -70,24 +73,36 @@ quizObject.initQuestion = function(newQuestion){
 		$('.quiz__next').addClass('hide');
 		$('.quiz__body').addClass('hide');
 		$('.quiz__timer').addClass('hide');
+		finalString = "";
 		$.each(answerkey, function(index, val) {
-   			answerString += (val+", ");
+			console.log('looping through'+index);
+			offsetIndex= index+1;
+			questionElement = $('.quiz__body:nth-child('+(offsetIndex+1)+') li:nth-child('+val+')');
+			answerElement = $('.quiz__body:nth-child('+(offsetIndex+1)+') li:nth-child('+yourAnswers[index]+')');
+			console.log (answerElement);
+			finalString += ("Question: "+offsetIndex+"</br>");
+			finalString += ("the correct answer is "+ questionElement.html()+"</br>" );
+			if (yourAnswers[index] == 0){
+				finalString += " you skipped this question</br>";
+			} else {
+				finalString += ("you answered "+ answerElement.html()+"</br>" );
+			}
+			finalString += "</br>";
 		});
-		$.each(yourAnswers, function(index, val) {
-   			yourString += (val+", ");
-		});
-		$('.quiz-answers').html(answerString);
-		$('.your-answers').html(yourString);
+		$('.finalScreen').html(finalString);
 	}
 }
 quizObject.timer = function(timeLeft){
 
 	if (timeLeft > 0) {
+	$('.quiz__timer').html(timeLeft+ " seconds left");
 	id = setInterval(function() {
 	    timeLeft--;
 	    if(timeLeft < 0) {
+	    	yourAnswers[activeQuestion] = 0;
 	    	console.log('timeup');
 	    	clearInterval(id);
+	    	$('.quiz__answer-container').addClass('disabled');
 	    } else {
 	    	console.log('countdown');
 	        $('.quiz__timer').html(timeLeft+ " seconds left");
