@@ -1,7 +1,7 @@
 //git controlled version
 $( document ).ready(function() {
 
-answerkey = [1,3];
+answerkey = [1,1];
 yourAnswers = [];
 activeQuestion = 0;
 numRight = 0;
@@ -64,13 +64,14 @@ quizObject.initQuestion = function(newQuestion){
 		quizObject.timer(0);
 		quizObject.timer(timerCount);
 		$('.quiz__body').addClass('hide');
-		$('.quiz__next').html('skip this question');
+		$('.quiz__next').html('skip');
 		$('.quiz__body:nth-child('+(newQuestion+2)+')').removeClass('hide');
 		console.log("activating "+newQuestion);
 	} else {
 		quizObject.timer(0);
 		console.log('final screen');
 		$('.finalScreen').removeClass('hide');
+		$('.quiz__watch').addClass('hide');
 		$('.quiz__next').addClass('hide');
 		$('.quiz__body').addClass('hide');
 		$('.quiz__timer').addClass('hide');
@@ -92,21 +93,23 @@ quizObject.initQuestion = function(newQuestion){
 		});
 		$('.finalScreen').html(finalString);
 	}
-}
+};
 quizObject.timer = function(timeLeft){
 
 	if (timeLeft > 0) {
-	$('.quiz__timer').html(timeLeft+ " seconds left");
+	$('.quiz__timer').html(timeLeft + 's');
 	id = setInterval(function() {
 	    timeLeft--;
-	    if(timeLeft < 0) {
+	    if(timeLeft <= 0) {
 	    	yourAnswers[activeQuestion] = 0;
 	    	console.log('timeup');
+	    	$('.quiz__timer').html(timeLeft + 's');
+	    	$('.quiz__next').html('next question');
 	    	clearInterval(id);
 	    	$('.quiz__answer-container').addClass('disabled');
 	    } else {
 	    	console.log('countdown');
-	        $('.quiz__timer').html(timeLeft+ " seconds left");
+	        $('.quiz__timer').html(timeLeft + 's');
 	    }
 	}, 1000);
 	} else {

@@ -11,10 +11,10 @@ $module-name: 'quiz';
 .#{$module-name} {
 
 
-  img {
-    width:10px;
-    height:10px;
-  }
+  // img {
+  //   width:10px;
+  //   height:10px;
+  // }
   // Module Styles
   width: 85%;
   font-family: 'helvetica', sans-serif;
@@ -41,17 +41,34 @@ $module-name: 'quiz';
     margin-bottom: 5px;
   }
 
-  &__timer {
+  &__watch {
+    position: relative;
+    height: 60px;
+    width: 50px;
     float: right;
+    background-image: url('../img/stopwatch.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &__timer {
+    position: absolute;
+    top: 19px;
+    right: 9px;
+    height: 32px;
+    width: 32px;
+    border-radius: 100%;
+    background-color: white;
+    text-align: center;
+    line-height: 2.3;
   }
 
   &__next {
     cursor: pointer;
-    float: right;
-    clear: right;
   }
 
   &__progress {
+    margin: 17px 0 5px;
     cursor: pointer;
   }
 
@@ -60,9 +77,14 @@ $module-name: 'quiz';
     margin-bottom: 15px;
   }
 
-  &__answer {
-    height: 40px;
+  &__question-image {
     width: 100%;
+    height: auto;
+    margin: auto;
+  }
+
+  &__answer {
+    width: 85%;
     border-radius: 3px;
     background-color: #f2f2e8; 
     -webkit-transition: background .1s;
@@ -72,7 +94,20 @@ $module-name: 'quiz';
     cursor: pointer;
   }
 
-  &__answer-text {
+  &__answer--text {
+    height: 40px;
+  }
+
+  &__answer--image {
+    padding: 7.5%;
+  }
+
+  &__answer-image {
+    height: auto;
+    width: 85%;
+  }
+
+  &__answer-text {   
     line-height: 14px;
     padding-top: 14px;
     font-family: 'helvetica', sans-serif;
