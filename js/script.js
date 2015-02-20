@@ -59,6 +59,7 @@ quizObject.initQuestion = function(newQuestion){
 	didAnswer=false;
 	$(".quiz__summary").addClass('quiz__summary--hidden');
 	$('.quiz__answer-container').removeClass('disabled');
+	$('.quiz__answer').removeClass('correct').removeClass('incorrect');
 	if (newQuestion <answerkey.length){
 		quizObject.timer(0);
 		quizObject.timer(timerCount);
