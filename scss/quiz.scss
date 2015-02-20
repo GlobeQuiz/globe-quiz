@@ -1,3 +1,8 @@
+body, html {
+  width: 100%;
+  height: 100%;
+}
+
 // *
 // *  QUIZ TOOL 
 // *
@@ -7,122 +12,194 @@ $module-name: 'quiz';
 // ------------------------------------------------------------
 // Default Styles
 // ------------------------------------------------------------
+.#{$module-name}-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 
 .#{$module-name} {
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  right: 0px;
+  bottom: 50px;
+  padding: 30px;
+  overflow: auto;
 
+  &-masthead { 
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 50px;
+    border-bottom: 1px solid #DDD;
+  }
 
-  // img {
-  //   width:10px;
-  //   height:10px;
-  // }
+  &-logo-wrapper {
+    display: inline-block;
+    padding: 15px 30px;
+  }
+  
+  &-logo {
+    height: 20px;
+    width: 150px;
+    background: url('../img/boston-globe.png');
+    background-size: cover;
+  }
+
+  &-name {
+    float: right;
+    height: 50px;
+    line-height: 50px;
+    vertical-align: middle;
+    margin: 0px 20px;
+    font-size: 18px;
+    font-family: 'Miller Headline Roman';
+  }
+
   // Module Styles
-  width: 85%;
-  font-family: 'helvetica', sans-serif;
-  padding: 10px 7.5%;
-  margin-bottom: 30px;
-  display: block;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  &-footer {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 50px;
+    border-top: 1px solid #EEE;
+  }
 
   // Some Element Styles
   &__header {
     width: 100%;
     position: relative;
-    padding: 5px 0 15px;
-    overflow: auto;
+    padding: 5px 0 10px;
   }
 
-  &__title {
-    width: 100%;
-    text-transform: uppercase;
+  &__progress, 
+  &__watch,
+  &__next {
     display: inline-block;
-    font-size: 26px;
-    text-align: left;
-    margin-bottom: 5px;
+    font-family: 'Miller Headline Roman';
+    line-height: 50px;
+    padding: 0px 30px;
   }
 
-  &__watch {
-    position: relative;
-    height: 60px;
-    width: 50px;
-    float: right;
+  &__timer, 
+  &__timer__icon {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &__timer {
+    margin-left: 5px;
+  }
+
+  &__timer__icon {
+    margin-top: -5px;
+    height: 20px;
+    width: 20px;
     background-image: url('../img/stopwatch.svg');
     background-repeat: no-repeat;
     background-size: contain;
   }
 
-  &__timer {
-    position: absolute;
-    top: 19px;
-    right: 9px;
-    height: 32px;
-    width: 32px;
-    border-radius: 100%;
-    background-color: white;
-    text-align: center;
-    line-height: 2.3;
-  }
-
   &__next {
     cursor: pointer;
+    float: right;
+
+    &:hover {
+      opacity: .8;
+    }
   }
 
   &__progress {
-    margin: 17px 0 5px;
     cursor: pointer;
   }
 
   &__question {
-    font-weight: 700;
-    margin-bottom: 15px;
-  }
-
-  &__question-image {
-    width: 100%;
-    height: auto;
-    margin: auto;
+    display: block;
+    font-size: 30px;
+    line-height: 38px;
+    margin: 0px 0px 30px 0px;
+    text-align: left;
+    font-family: "Miller Headline Roman";
   }
 
   &__answer {
-    width: 85%;
-    border-radius: 3px;
-    background-color: #f2f2e8; 
-    -webkit-transition: background .1s;
-    text-align: center;
-    margin: 10px 0; 
-    font-weight: 700;
-    cursor: pointer;
+    -webkit-transition: .1s ease all;
+
+    &--text {
+      min-width: 160px;
+      max-width: 50%;
+      margin: 8px 0; 
+      border-radius: 3px;
+      font-weight: 700;
+      background-color: #f2f2e8;
+      box-shadow: 0px 2px #ddd;
+
+      &.correct {
+        background: #BDFFBD;
+        box-shadow: 0px 2px #AFECAC;
+        -webkit-animation: 1s tada;
+      }
+
+      &.incorrect {
+        background: #FFC5BD;
+        box-shadow: 0px 2px #F4B0B0;
+        -webkit-animation: 1s shake;
+      }
+    }
+
+    &--image {
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+      margin: 4px;
+      box-sizing: border-box;
+
+      img {
+        height: 150px;
+        vertical-align: top;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        -webkit-transition: .3s ease all;
+      }
+
+      &:hover {
+        &:after {
+          background-color: rgba(0, 0, 0, .2);
+        }
+      }
+
+      &.correct {
+        -webkit-animation: 1s tada;
+
+        &:after {
+          background-color: rgba(0, 255, 0, .3);
+        }
+      }
+
+      &.incorrect {
+        -webkit-animation: 1s shake;
+
+        &:after {
+          background-color: rgba(255, 0, 0 , .3);
+        }
+      }
+    }
   }
 
-  &__answer--text {
-    height: 40px;
-  }
-
-  &__answer--image {
-    padding: 7.5%;
-  }
-
-  &__answer-image {
-    height: auto;
-    width: 85%;
-  }
-
-  &__answer-text {   
-    line-height: 14px;
-    padding-top: 14px;
+  &__answer-text {
     font-family: 'helvetica', sans-serif;
     font-weight: 700;
-  }
-
-  .correct {
-    background-color: #DEFDD7; 
-    -webkit-animation: tada 1s;
-  }
-
-  .incorrect {
-    background-color: #FFBCBA; 
-    border: none;
-    -webkit-animation: shake 1s;
+    padding: 15px 15px 13px 15px;
   }
   
   .hide {
