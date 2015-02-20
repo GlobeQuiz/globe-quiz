@@ -75,6 +75,7 @@ $( document ).ready(function() {
 				$('.quiz__body').addClass('hide');
 				$('.quiz__timer').addClass('hide');
 				finalString = "";
+				finalString += "<p class='quiz__question'> You got " + numRight + " out of " + answerkey.length + " questions correct! </p>";
 				$.each(answerkey, function(index, val) {
 					console.log('looping through'+index);
 					offsetIndex= index+1;
